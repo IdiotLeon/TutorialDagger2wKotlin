@@ -2,6 +2,7 @@ package com.idiotleon.tutorialdagger2withkotlin.essentials
 
 import com.idiotleon.tutorialdagger2withkotlin.MainActivity
 import dagger.Component
+import dagger.Lazy
 import javax.inject.Inject
 
 class Presenter @Inject constructor(

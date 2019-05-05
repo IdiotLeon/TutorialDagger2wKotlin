@@ -6,11 +6,11 @@ import com.idiotleon.tutorialdagger2withkotlin.extra.PROD_ENDPOINT
 import javax.inject.Inject
 import javax.inject.Provider
 
-class Client(private val connectionFactory: Provider<Connection>) {
+class Client @Inject constructor(private val connectionFactory: Provider<Connection>) {
     fun fetchData(): String = connectionFactory.get().doReq()
 }
 
-class Connection {
+class Connection @Inject constructor() {
     private val endpoint = if (BuildConfig.DEBUG) {
         DEBUG_ENDPOINT
     } else {
