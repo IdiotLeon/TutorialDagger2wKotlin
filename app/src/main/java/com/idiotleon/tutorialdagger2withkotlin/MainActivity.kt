@@ -6,12 +6,23 @@ import android.view.Menu
 import android.view.MenuItem
 import com.idiotleon.tutorialdagger2withkotlin.basic.MainPresenterFactory
 import com.idiotleon.tutorialdagger2withkotlin.essentials.DaggerPresenterFactory
+import com.idiotleon.tutorialdagger2withkotlin.essentials.Presenter
 import com.idiotleon.tutorialdagger2withkotlin.modules.multibind.Multibinding
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
-
-    private var presenter = MainPresenterFactory().get()
+    /*
+    Requirements of field injection:
+    1. it must be annotated with @Inject
+    2. it must be vars
+    3. it must be visible
+    4. it must be (keyword)lateinit
+    Now the (variable)presenter is set by dependency injection,
+    not an explicit call to the factory
+     */
+    @Inject
+    lateinit var presenter: Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
