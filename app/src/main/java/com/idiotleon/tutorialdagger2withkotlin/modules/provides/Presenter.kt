@@ -32,6 +32,12 @@ class Presenter @Inject constructor(
     }
 }
 
+/**
+ * To teach Dagger the object it cannot create
+ * Situations are like:
+ *  1. The constructor might be in code that might not be accessible, like a 3rd party library
+ *  2. The object is created by code which we have no control, such as an Android contract, or ROM DLL
+ */
 @Module
 object DAOModule {
     @JvmStatic
