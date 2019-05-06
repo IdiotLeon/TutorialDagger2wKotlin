@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import com.idiotleon.tutorialdagger2withkotlin.components.DaggerNetworkFactory
 import com.idiotleon.tutorialdagger2withkotlin.components.DaggerPresenterFactory
 import com.idiotleon.tutorialdagger2withkotlin.essentials.Presenter
 import com.idiotleon.tutorialdagger2withkotlin.extra.DEBUG_ENDPOINT
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         DaggerPresenterFactory.builder()
-            .endpoint(DEBUG_ENDPOINT)
+            .networkFactory(DaggerNetworkFactory.builder().endpoint(DEBUG_ENDPOINT).build())
             .build()
             .inject(this)
 

@@ -14,16 +14,8 @@ class Presenter @Inject constructor(private val client: Lazy<Client>) {
     }
 }
 
-@Component
+@Component(dependencies = [NetworkFactory::class])
 interface PresenterFactory {
-    @Component.Builder
-    interface Builder {
-        fun build(): PresenterFactory
-
-        @BindsInstance
-        fun endpoint( endpoint: String): Builder
-    }
-
     fun presenter(): Presenter
     fun inject(act: MainActivity)
 }
