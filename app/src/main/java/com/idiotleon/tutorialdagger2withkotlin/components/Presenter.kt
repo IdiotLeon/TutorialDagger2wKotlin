@@ -6,7 +6,9 @@ import dagger.Lazy
 import dagger.Subcomponent
 import javax.inject.Inject
 import javax.inject.Named
+import javax.inject.Singleton
 
+@Singleton
 class Presenter @Inject constructor(private val client: Lazy<Client>) {
     fun connect(show: (String?) -> Unit) {
         val data: String = client.get().fetchData()
@@ -14,6 +16,10 @@ class Presenter @Inject constructor(private val client: Lazy<Client>) {
     }
 }
 
+/*
+ * In general, a factory needs to be marked with all of scopes used by any of the objects it provides
+ */
+@Singleton
 @Subcomponent
 interface PresenterFactory {
     @Subcomponent.Builder
