@@ -1,11 +1,9 @@
 package com.idiotleon.tutorialdagger2withkotlin.components
 
 import com.idiotleon.tutorialdagger2withkotlin.MainActivity
-import dagger.BindsInstance
-import dagger.Component
 import dagger.Lazy
+import dagger.Subcomponent
 import javax.inject.Inject
-import javax.inject.Named
 
 class Presenter @Inject constructor(private val client: Lazy<Client>) {
     fun connect(show: (String?) -> Unit) {
@@ -14,7 +12,7 @@ class Presenter @Inject constructor(private val client: Lazy<Client>) {
     }
 }
 
-@Component(dependencies = [NetworkFactory::class])
+@Subcomponent
 interface PresenterFactory {
     fun presenter(): Presenter
     fun inject(act: MainActivity)
