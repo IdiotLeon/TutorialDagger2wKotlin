@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.idiotleon.tutorialdagger2withkotlin.components.App
 import com.idiotleon.tutorialdagger2withkotlin.essentials.Presenter
+import com.idiotleon.tutorialdagger2withkotlin.extra.DEBUG_ENDPOINT
 import com.idiotleon.tutorialdagger2withkotlin.modules.multibind.Multibinding
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
@@ -26,7 +27,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        App.rootFactor.presenterFactory().inject(this)
+        App.rootFactor.presenterFactory()
+            .endpoint(DEBUG_ENDPOINT)
+            .build()
+            .inject(this)
 
         setContentView(R.layout.activity_main)
 
