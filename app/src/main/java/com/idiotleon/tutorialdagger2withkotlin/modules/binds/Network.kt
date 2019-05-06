@@ -15,6 +15,10 @@ interface PresenterFactory {
 
 @Module
 interface ConnectionModule {
+    /**
+     * The (annotation)Binds tells Dagger how to create the implementation of an interface,
+     * or a sub-class of its super-class
+     */
     @Binds
     fun bindConnection(connection: NetworkConnection): Connection
 }
